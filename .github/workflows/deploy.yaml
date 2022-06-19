@@ -15,6 +15,6 @@ jobs:
           java-version: '11'
       - uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
         with:
-          heroku_api_key: ae53f454-77cd-4d43-899e-46a7ad316a12
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: "movie-aej" #Must be unique in Heroku
           heroku_email: "say.luckmann@gmail.com"
