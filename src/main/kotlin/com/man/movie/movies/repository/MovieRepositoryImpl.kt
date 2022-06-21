@@ -6,6 +6,7 @@ import com.mongodb.client.MongoCollection
 import org.litote.kmongo.eq
 import org.litote.kmongo.findOne
 import org.litote.kmongo.getCollection
+import org.litote.kmongo.setValue
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Repository
 
@@ -32,4 +33,20 @@ class MovieRepositoryImpl : MovieRepository {
             getMovies()
         }else throw IllegalArgumentException("Insert failed")
     }
+
+    override fun delete(id: String): List<MovieEntity> {
+        val deleteAction = movieCollection().deleteOne(MovieEntity::id eq id)
+        return if (deleteAction.wasAcknowledged()){
+            getMovies()
+        }else throw IllegalArgumentException("Delete failed")
+    }
+
+    override fun updateMovie(movie: MovieEntity): List<MovieEntity> {
+        val updateAction = movieCollection().updateOne(MovieEntity::id eq movie.id, setValue(MovieEntity::name, movie.name))
+        return if (updateAction.wasAcknowledged()){
+            getMovies()
+        }else throw IllegalArgumentException("Update failed")
+    }
+
+
 }

@@ -23,5 +23,13 @@ class MovieServiceImpl : MovieService {
         return repository.addMovie(movie)
     }
 
+    override fun delete(id: String): List<MovieEntity> {
+        return repository.delete(id)
+    }
+
+    override fun updateMovie(movie: MovieEntity): List<MovieEntity> {
+        return repository.updateMovie(movie)
+    }
+
 
 }

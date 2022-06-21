@@ -43,4 +43,24 @@ class MovieController {
         )
     }
 
+    @DeleteMapping("/delete/{id}")
+    fun deleteUser(
+            @PathVariable(value = "id") movieId: String
+    ): BaseResponse<List<MovieEntity>> {
+        return BaseResponse(
+                message = "Success Delete User",
+                data = movieService.delete(movieId)
+        )
+    }
+
+    @PutMapping("/update")
+    fun updateUser(
+            @RequestBody movie: MovieEntity
+    ): BaseResponse<List<MovieEntity>> {
+        return BaseResponse(
+                message = "Success Update User",
+                data = movieService.updateMovie(movie)
+        )
+    }
+
 }
