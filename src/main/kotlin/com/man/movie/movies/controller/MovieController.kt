@@ -34,7 +34,7 @@ class MovieController {
 
     // Request Path
     @GetMapping("/{id}")
-    fun getUserById(
+    fun getMovieById(
             @PathVariable(value = "id") movieId: String
     ): BaseResponse<MovieEntity?> {
         return BaseResponse(
@@ -44,21 +44,21 @@ class MovieController {
     }
 
     @DeleteMapping("/delete/{id}")
-    fun deleteUser(
+    fun deleteMovie(
             @PathVariable(value = "id") movieId: String
     ): BaseResponse<List<MovieEntity>> {
         return BaseResponse(
-                message = "Success Delete User",
+                message = "Success Delete Movie",
                 data = movieService.delete(movieId)
         )
     }
 
     @PutMapping("/update")
-    fun updateUser(
+    fun updateMovie(
             @RequestBody movie: MovieEntity
     ): BaseResponse<List<MovieEntity>> {
         return BaseResponse(
-                message = "Success Update User",
+                message = "Success Update Movie",
                 data = movieService.updateMovie(movie)
         )
     }
