@@ -7,10 +7,7 @@ import org.litote.kmongo.KMongo
 @Component
 class DatabaseComponent {
 
-    companion object {
-        private const val DB_URL = "mongodb+srv://aej:myhvtwq21m@cluster0.dugg7.mongodb.net/?retryWrites=true&w=majority"
-    }
-
-    val  database : MongoClient = KMongo.createClient(DB_URL)
+    val databaseURL = System.getenv("DATABASE_URL")
+    val  database : MongoClient = KMongo.createClient(databaseURL)
 
 }
